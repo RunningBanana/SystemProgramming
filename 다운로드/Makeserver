@@ -1,0 +1,17 @@
+###Makefile for Chatting Program
+###Wrtier: Team9 Kim-Dong-Hwan, Lee-Hyung-Min
+
+.PHONY:   clean
+RM = rm -f
+
+chatting_server: chatting_server.o socklib.o
+	gcc -o chatting_server chatting_server.o socklib.o -lpthread
+
+chatting_server.o: chatting_server.c socklib.c socklib.h
+	gcc -Wall -g -c chatting_server.c
+
+socklib.o: socklib.c socklib.h
+	gcc -Wall -g -c socklib.c
+
+clean:
+	$(RM) *.o
